@@ -1,12 +1,15 @@
 import { useEffect, useState } from "preact/hooks";
 import style from "./style.css";
 
+import { captureAvatarImage } from "../../services/images";
+
 // Default GitHub style
 const GRID_OFF_COLOR = "#F0F0F0";
+const GRID_ON_COLOR = "#E894BC";
 const GRID_SIZE = 5;
 
 const makeRandomGrids = (
-  gridOnColor = "#E894BC",
+  gridOnColor = GRID_ON_COLOR,
   gridOffColor = GRID_OFF_COLOR,
   gridSize = GRID_SIZE
 ) => {
@@ -39,18 +42,18 @@ const Grids = () => {
 
   useEffect(() => {
     setGrids(makeRandomGrids());
+    captureAvatarImage();
   }, []);
 
   return grids ? (
     <div
+      id="grids"
       className={style.wrapper}
-      style={{ gridTemplateColumns: `repeat(${GRID_SIZE}, 1fr)` }}
+      style={{ gridTemplateColumns: `repeat(${GRID_SIZE}, 70px)` }}
     >
       {grids.map((row) =>
         row.map((grid) => (
-          <div className={style.square} style={{ backgroundColor: grid }}>
-            {grid}
-          </div>
+          <div className={style.square} style={{ backgroundColor: grid }}></div>
         ))
       )}
     </div>

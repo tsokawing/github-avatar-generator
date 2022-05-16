@@ -1,5 +1,7 @@
 .wrapper {
   display: grid;
+  width: 420px;
+  border: solid 35px #f0f0f0;
 }
 
 .square {
