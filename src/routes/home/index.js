@@ -13,6 +13,22 @@ const GRID_ON_COLOR = "#E894BC";
 const GRID_LENGTH = 5;
 const GRID_SIZE = 70;
 
+const makeEmptyGrids = (
+  gridOffColor = GRID_OFF_COLOR,
+  gridLength = GRID_LENGTH
+) => {
+  let grids = Array(gridLength)
+    .fill()
+    .map((row) => Array(gridLength));
+
+  for (let i = 0; i < gridLength; i++) {
+    for (let j = 0; j < gridLength; j++) {
+      grids[i][j] = gridOffColor;
+    }
+  }
+  return grids;
+};
+
 const makeRandomGrids = (
   gridOnColor = GRID_ON_COLOR,
   gridOffColor = GRID_OFF_COLOR,
@@ -78,9 +94,8 @@ const Home = () => {
         />
         <section>
           <button onClick={downloadAvatarImage}>Download</button>
-          <button onClick={() => setGrids(makeRandomGrids())}>
-            Regenerate
-          </button>
+          <button onClick={() => setGrids(makeRandomGrids())}>Random</button>
+          <button onClick={() => setGrids(makeEmptyGrids())}>Clear</button>
         </section>
       </main>
     </div>
