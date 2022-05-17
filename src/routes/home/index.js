@@ -102,10 +102,13 @@ const Home = () => {
 
   return (
     <div class={style.home}>
-      <h1>Make Your Favourite GitHub Style Avatar!</h1>
+      <h1>Make Your Own GitHub Style Avatar!</h1>
       <p>
-        Make your own favourite GitHub-style avatar! Each avatar is 420x420px
-        with 35px margins, with means each grid is 70px and symmetric.
+        Generate random avatar or click on the grids to edit your own design!
+      </p>
+      <p>
+        Each avatar is a 5x5 symmetric pixel art. The generated image is
+        420x420, with every grid being 70x70 and a border of 35.
       </p>
       <main class={style.editor}>
         <Grids
