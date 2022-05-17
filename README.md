@@ -1,5 +1,11 @@
 # github-avatar-generator
 
+I was finding a GitHub style avatar generator to replace my boring avatar and I was out of luck. So I made this web tool for anyone like me who want to design their own GitHub-like avatar.
+
+## Technologies
+
+Made with Preact using domtoimage, file-saver and react-colorful. Hosted on GitHub Pages.
+
 ## CLI Commands
 
 ``` bash
