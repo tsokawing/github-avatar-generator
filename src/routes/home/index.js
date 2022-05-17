@@ -1,5 +1,5 @@
 import { h } from "preact";
-import { useEffect, useState } from "preact/hooks";
+import { useEffect, useState, useCallback } from "preact/hooks";
 
 import Grids from "../../components/grids";
 import style from "./style.css";
@@ -53,15 +53,29 @@ const Home = () => {
 
   useEffect(() => {
     setGrids(makeRandomGrids());
-    console.log(grids);
   }, []);
+
+  const handleGridClick = useCallback(
+    ({ i, j }) => {
+      let newGrids = [...grids];
+      newGrids[i][j] =
+        newGrids[i][j] === GRID_ON_COLOR ? GRID_OFF_COLOR : GRID_ON_COLOR;
+      setGrids(newGrids);
+    },
+    [grids]
+  );
 
   return (
     <div class={style.home}>
       <h1>Make Your Favourite GitHub Style Avatar!</h1>
       <p>Each avator is 420x420, 5x5-bit and symmetric.</p>
       <main>
-        <Grids grids={grids} gridLength={GRID_LENGTH} gridSize={GRID_SIZE} />
+        <Grids
+          grids={grids}
+          gridLength={GRID_LENGTH}
+          gridSize={GRID_SIZE}
+          handleGridClick={handleGridClick}
+        />
         <section>
           <button onClick={downloadAvatarImage}>Download</button>
           <button onClick={() => setGrids(makeRandomGrids())}>
