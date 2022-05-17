@@ -3,6 +3,7 @@ import { useEffect, useState, useCallback } from "preact/hooks";
 
 import Grids from "../../components/grids";
 import style from "./style.css";
+import "./style.css";
 
 import domtoimage from "dom-to-image";
 import { saveAs } from "file-saver";
@@ -89,7 +90,6 @@ const Home = () => {
     if (grids.length !== GRID_LENGTH) return;
 
     let newGrids = [...grids];
-    console.log(grids);
     for (let i = 0; i < newGrids.length; i++) {
       for (let j = 0; j < newGrids.length; j++) {
         if (newGrids[i][j] !== GRID_OFF_COLOR) {
@@ -103,21 +103,27 @@ const Home = () => {
   return (
     <div class={style.home}>
       <h1>Make Your Favourite GitHub Style Avatar!</h1>
-      <p>Each avator is 420x420, 5x5-bit and symmetric.</p>
-      <main>
+      <p>
+        Make your own favourite GitHub-style avatar! Each avatar is 420x420px
+        with 35px margins, with means each grid is 70px and symmetric.
+      </p>
+      <main class={style.editor}>
         <Grids
           grids={grids}
           gridLength={GRID_LENGTH}
           gridSize={GRID_SIZE}
           handleGridClick={handleGridClick}
         />
-        <section>
-          <button onClick={downloadAvatarImage}>Download</button>
-          <button onClick={() => setGrids(makeRandomGrids(gridOnColor))}>
-            Random
-          </button>
-          <button onClick={() => setGrids(makeEmptyGrids())}>Clear</button>
+        <section class={style.toolbar}>
           <HexColorPicker color={gridOnColor} onChange={setGridOnColor} />
+
+          <div class={style.buttons}>
+            <button onClick={() => setGrids(makeRandomGrids(gridOnColor))}>
+              Random
+            </button>
+            <button onClick={() => setGrids(makeEmptyGrids())}>Clear</button>
+            <button onClick={downloadAvatarImage}>Download</button>
+          </div>
         </section>
       </main>
     </div>
