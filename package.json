@@ -31,7 +31,8 @@
     "file-saver": "^2.0.5",
     "preact": "^10.3.2",
     "preact-render-to-string": "^5.1.4",
-    "preact-router": "^3.2.1"
+    "preact-router": "^3.2.1",
+    "react-colorful": "^5.5.1"
   },
   "jest": {
     "preset": "jest-preset-preact",

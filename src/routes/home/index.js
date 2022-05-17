@@ -6,6 +6,7 @@ import style from "./style.css";
 
 import domtoimage from "dom-to-image";
 import { saveAs } from "file-saver";
+import { HexColorPicker } from "react-colorful";
 
 // Default GitHub style
 const GRID_OFF_COLOR = "#F0F0F0";
@@ -66,20 +67,38 @@ const downloadAvatarImage = () => {
 
 const Home = () => {
   const [grids, setGrids] = useState([[]]);
+  const [gridOnColor, setGridOnColor] = useState(GRID_ON_COLOR);
 
   useEffect(() => {
-    setGrids(makeRandomGrids());
+    setGrids(makeRandomGrids(gridOnColor));
   }, []);
 
+  // Toggle grid cell color between on/off on click
   const handleGridClick = useCallback(
     ({ i, j }) => {
       let newGrids = [...grids];
       newGrids[i][j] =
-        newGrids[i][j] === GRID_ON_COLOR ? GRID_OFF_COLOR : GRID_ON_COLOR;
+        newGrids[i][j] === gridOnColor ? GRID_OFF_COLOR : gridOnColor;
       setGrids(newGrids);
     },
     [grids]
   );
+
+  // Update color for all initialized grids
+  useEffect(() => {
+    if (grids.length !== GRID_LENGTH) return;
+
+    let newGrids = [...grids];
+    console.log(grids);
+    for (let i = 0; i < newGrids.length; i++) {
+      for (let j = 0; j < newGrids.length; j++) {
+        if (newGrids[i][j] !== GRID_OFF_COLOR) {
+          newGrids[i][j] = gridOnColor;
+        }
+      }
+    }
+    setGrids(newGrids);
+  }, [gridOnColor]);
 
   return (
     <div class={style.home}>
@@ -94,8 +113,11 @@ const Home = () => {
         />
         <section>
           <button onClick={downloadAvatarImage}>Download</button>
-          <button onClick={() => setGrids(makeRandomGrids())}>Random</button>
+          <button onClick={() => setGrids(makeRandomGrids(gridOnColor))}>
+            Random
+          </button>
           <button onClick={() => setGrids(makeEmptyGrids())}>Clear</button>
+          <HexColorPicker color={gridOnColor} onChange={setGridOnColor} />
         </section>
       </main>
     </div>
