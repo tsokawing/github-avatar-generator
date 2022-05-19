@@ -4,7 +4,7 @@ I was finding a GitHub style avatar generator to replace my boring avatar and I 
 
 ## Technologies
 
-Made with Preact using domtoimage, file-saver and react-colorful. Hosted on GitHub Pages.
+Made with Preact using domtoimage, file-saver and react-colorful. Hosted on Vercel.
 
 ## CLI Commands
 
