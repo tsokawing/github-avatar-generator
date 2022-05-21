@@ -102,32 +102,33 @@ const Home = () => {
 
   return (
     <div class={style.home}>
-      <h1>Make Your Own GitHub Style Avatar!</h1>
-      <p>
-        Generate random avatar or click on the grids to edit your own design!
-      </p>
-      <p>
-        Each avatar is a 5x5 symmetric pixel art. The generated image is
-        420x420, with every grid being 70x70 and a border of 35.
-      </p>
       <main class={style.editor}>
-        <Grids
-          grids={grids}
-          gridLength={GRID_LENGTH}
-          gridSize={GRID_SIZE}
-          handleGridClick={handleGridClick}
-        />
-        <section class={style.toolbar}>
-          <HexColorPicker color={gridOnColor} onChange={setGridOnColor} />
+        <div class={style.avatar}>
+          <Grids
+            grids={grids}
+            gridLength={GRID_LENGTH}
+            gridSize={GRID_SIZE}
+            handleGridClick={handleGridClick}
+          />
+        </div>
+        <div>
+          <h1 class={style.title}>Make Your Own GitHub Style Avatar!</h1>
+          <p class={style.descriptions}>
+            Generate random avatar or click on the grids to edit your own
+            design! Each avatar is a 420x420px image with a border of 35px.
+          </p>
+          <section class={style.toolbar}>
+            <HexColorPicker color={gridOnColor} onChange={setGridOnColor} />
 
-          <div class={style.buttons}>
-            <button onClick={() => setGrids(makeRandomGrids(gridOnColor))}>
-              Random
-            </button>
-            <button onClick={() => setGrids(makeEmptyGrids())}>Clear</button>
-            <button onClick={downloadAvatarImage}>Download</button>
-          </div>
-        </section>
+            <div class={style.buttons}>
+              <button onClick={() => setGrids(makeRandomGrids(gridOnColor))}>
+                Random
+              </button>
+              <button onClick={() => setGrids(makeEmptyGrids())}>Clear</button>
+              <button onClick={downloadAvatarImage}>Download</button>
+            </div>
+          </section>
+        </div>
       </main>
     </div>
   );

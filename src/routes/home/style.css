@@ -1,28 +1,54 @@
 .home {
-  height: 100vh;
-  width: 900px;
+  max-width: 1280px;
   margin: auto;
-  margin-top: 80px;
+  margin-top: 60px;
+  padding: 20px 100px;
 }
 
 .editor {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 35px;
+}
+
+.avatar {
+  margin-right: 60px;
+}
+
+.title {
+  font-size: 50px;
+  margin: 0;
+  margin-top: -70px;
+}
+
+.descriptions {
+  font-size: 20px;
+  line-height: 30px;
+  color: #444;
 }
 
 .toolbar {
-  width: 420px;
+  display: flex;
 }
 
-.toolbar > div {
-  width: 280px;
-  margin: auto;
+.toolbar > div:first-child {
+  height: 158px;
 }
 
-.toolbar .buttons {
-  margin-top: 6px;
+.toolbar > div > div:nth-child(2) {
+  /* width: 280px;
+  margin: auto; */
+  height: 12px;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: column;
+  margin-left: 10px;
+}
+
+.buttons > button {
+  margin-bottom: 12px;
 }
 
 /* GitHub style button taken from CSS scan: https://getcssscan.com/css-buttons-examples */
@@ -37,7 +63,7 @@
   box-shadow: rgba(27, 31, 35, 0.04) 0 1px 0,
     rgba(255, 255, 255, 0.25) 0 1px 0 inset;
   box-sizing: border-box;
-  color: #24292e;
+  color: #444;
   cursor: pointer;
   display: inline-block;
 
