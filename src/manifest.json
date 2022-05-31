@@ -1,6 +1,6 @@
 {
-  "name": "Github Avatar Generator",
-  "short_name": "Github Avatar Generator",
+  "name": "GitHub Avatar Generator",
+  "short_name": "GitHub Avatar Generator",
   "start_url": "/",
   "display": "standalone",
   "orientation": "portrait",
